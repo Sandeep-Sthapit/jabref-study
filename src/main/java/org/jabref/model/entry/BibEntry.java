@@ -16,6 +16,8 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.BiFunction;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import javafx.beans.Observable;
@@ -1192,5 +1194,39 @@ public class BibEntry implements Cloneable {
             return true;
         }
         return StandardField.AUTOMATIC_FIELDS.containsAll(this.getFields());
+    }
+
+    /**
+     * Calculates totalPage value of an entry from value of pages using Regex
+     * @return the total pages of an entry as String if a
+     *         valid value of pages is provided else returns empty String
+     */
+    public String calculateTotalPage(){
+        int totalPage = 0;
+        // Array to store numbers in the pages string
+        ArrayList<Integer> numbers = new ArrayList<Integer>();
+        // Variable to store the value of pages from the entry
+        String Pages = "";
+        String emptyString = "";
+        if(this.getField(StandardField.PAGES).isPresent()){
+            //get value of pages
+            Pages = String.valueOf(this.getField(StandardField.PAGES));
+            //use regex to find the numbers in Pages
+            Pattern pattern = Pattern.compile("\\d+");
+            Matcher matcher = pattern.matcher(Pages);
+            // Store the numbers from the pages into array
+            while (matcher.find()) {
+                numbers.add(Integer.parseInt(matcher.group()));
+            }
+            // Calculate total pages from the numbers
+            if(numbers.size()==4){
+                totalPage = numbers.get(3)-numbers.get(1);
+                return Integer.toString(totalPage);
+            } else if(numbers.size()==2){
+                totalPage = numbers.get(1)-numbers.get(0);
+                return Integer.toString(totalPage);
+            }
+        }
+        return emptyString;
     }
 }

@@ -89,6 +89,14 @@
                     <Tooltip text="%Next entry"/>
                 </tooltip>
             </Button>
+            <Button styleClass="icon-buttonNoSpaceTop,narrow" onAction="#navigateToNextEntry">
+                <graphic>
+                    <JabRefIconView glyph="LAST_ENTRY"/>
+                </graphic>
+                <tooltip>
+                    <Tooltip text="%Last entry"/>
+                </tooltip>
+            </Button>
         </ToolBar>
     </left>
     <center>

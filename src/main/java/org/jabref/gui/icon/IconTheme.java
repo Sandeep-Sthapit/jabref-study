@@ -306,6 +306,7 @@ public class IconTheme {
         PREVIOUS_UP(MaterialDesignC.CHEVRON_UP),
         NEXT_RIGHT(MaterialDesignC.CHEVRON_RIGHT),
         NEXT_DOWN(MaterialDesignC.CHEVRON_DOWN),
+        LAST_ENTRY(MaterialDesignP.PACKAGE_DOWN),
         LIST_MOVE_LEFT(MaterialDesignC.CHEVRON_LEFT),
         LIST_MOVE_UP(MaterialDesignC.CHEVRON_UP),
         LIST_MOVE_RIGHT(MaterialDesignC.CHEVRON_RIGHT),
