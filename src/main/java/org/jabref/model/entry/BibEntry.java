@@ -1195,7 +1195,9 @@ public class BibEntry implements Cloneable {
         }
         return StandardField.AUTOMATIC_FIELDS.containsAll(this.getFields());
     }
-
+    public void setPageTotal(){
+        this.setField(StandardField.PAGETOTAL, calculateTotalPage());
+    }
     /**
      * Calculates totalPage value of an entry from value of pages using Regex
      * @return the total pages of an entry as String if a
